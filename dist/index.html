@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Palabras</title>
+</head>
+<body>
+    <main class="contenedor">
+        <h1>Buscador de Palabras</h1>
+        <p>Ingrese un texto y una palabra para buscar en el texto.</p>
+        <form id="form-busqueda">
+            <label for="texto">Texto:</label>
+            <textarea id="texto" name="texto" required></textarea>
+            <label for="termino">Palabra a buscar:</label>
+            <input type="text" id="termino" name="termino" required>
+            <button id="limpiar" type="button">Limpiar</button>
+            <button type="submit">Buscar</button>
+        </form>
+
+        <section class="resultados" aria-live="polite">
+            <h2>Resultados:</h2>
+            <p id="conteo">Aún no has realizado una búsqueda.</p>
+            <div id="texto-procesado"></div>
+        </section>          
+
+    </main>
+    <script defer src="./bundle.js"></script>
+    
+</body>
+</html>
