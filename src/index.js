@@ -1,12 +1,16 @@
 import './style.css';
 import Swal from 'sweetalert2';
 
+
+
 let formulario = document.getElementById('form-busqueda');
 let cajaTexto = document.getElementById('texto');
 let cajaPalabra = document.getElementById('termino');
 let botonLimpiar = document.getElementById('limpiar');
 let resultadoConteo = document.getElementById('conteo');
 let textoResultado = document.getElementById('texto-procesado');
+let botonReemplazar = document.getElementById('reemplazar');
+let cajaReemplazo = document.getElementById('termino-reemplazo');
 
 function hacerBusqueda(evento) {
     evento.preventDefault();
@@ -108,9 +112,23 @@ function textoSeguro(texto) {
 function limpiarPantalla() {
     cajaTexto.value = '';
     cajaPalabra.value = '';
+    cajaReemplazo.value = '';
     textoResultado.textContent = '';
     resultadoConteo.textContent = '¡Listo! Aquí aparecerá tu búsqueda.';
 }
 
+function reemplazarPalabras() {
+    let palabra = cajaPalabra.value.trim();
+    if (!palabra) {
+        Swal.fire('¡Faltan datos!', 'Escribe la palabra a buscar para poder reemplazarla.', 'warning');
+        return;
+    }
+    cajaTexto.value = cajaTexto.value.replaceAll(
+        palabra, 
+        cajaReemplazo.value
+    );
+}
+
 formulario.addEventListener('submit', hacerBusqueda);
 botonLimpiar.addEventListener('click', limpiarPantalla);
+botonReemplazar.addEventListener('click', reemplazarPalabras);
